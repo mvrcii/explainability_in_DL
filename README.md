@@ -46,13 +46,6 @@ To use this HOG feature extraction implementation:
 2. Install the required dependencies.
 3. Run the Jupyter notebook `hog_feature_extraction.ipynb`.
 
-## Dependencies
-- Python 3.x
-- OpenCV
-- NumPy
-- Matplotlib
-- PIL
-
 ## License
 This project is open-sourced under the MIT license.
 
