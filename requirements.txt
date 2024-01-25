@@ -1,0 +1,9 @@
+opencv-python
+scikit-image
+scipy
+requests
+pillow
+openai
+numpy
+matplotlib
+jupyterlab
