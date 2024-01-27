@@ -7,3 +7,6 @@ openai
 numpy
 matplotlib
 jupyterlab
+torch
+timm
+tensorflow
