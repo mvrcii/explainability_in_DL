@@ -1,4 +1,15 @@
 # Histogram of Oriented Gradients (HOG) Feature Extraction
+## Getting Started
+First of all, install the requirements:
+```bash
+pip install -r requirements.txt
+```
+In order to test the HOG descriptor start the jupyter notebook:
+
+```bash
+jupyter notebook
+```
+
 
 ## Overview
 The Histogram of Oriented Gradients (HOG) is a feature descriptor used in computer vision and image processing for the purpose of object detection. This repository contains an implementation of HOG feature extraction in Python, demonstrated on images of cats. The HOG descriptor focuses on the structure or the shape of an object. It works by dividing the image into small connected regions called cells, and for the pixels within each cell, a histogram of gradient directions or edge orientations is compiled.
