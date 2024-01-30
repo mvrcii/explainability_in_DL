@@ -1,3 +1,6 @@
+import logging
+
+import timm
 import torch
 import torch.nn as nn
 
@@ -420,3 +423,4 @@ class VisionTransformer(nn.Module):
         x = self.head(cls_token_final)
 
         return x
+

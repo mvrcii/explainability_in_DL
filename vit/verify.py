@@ -4,7 +4,7 @@ import numpy as np
 import timm
 import torch
 
-from models.vit import VisionTransformer
+from vit import VisionTransformer
 
 logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
 

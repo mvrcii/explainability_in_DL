@@ -1,16 +1,15 @@
-import numpy as np
+import matplotlib.pyplot as plt
 import torch
 from PIL import Image
-import matplotlib.pyplot as plt
 from torchvision.transforms import transforms
 
-imagenet_labels = dict(enumerate(open('imagenet_1k_labels.txt')))
+imagenet_labels = dict(enumerate(open('vit/imagenet_1k_labels.txt')))
 
 # Load the model
-model = torch.load("model.pth")
+model = torch.load("vit/model.pth")
 model.eval()
 
-img = Image.open('dog.jpg')
+img = Image.open('vit/dog.jpg')
 plt.imshow(img)
 plt.show()
 
