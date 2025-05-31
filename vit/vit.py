@@ -142,7 +142,6 @@ class Attention(nn.Module):
         # Splitting QKV into separate tensors
         qkv = qkv.reshape(batch_size, n_patches, 3, self.n_heads, self.head_dim)  # (batch_size, n_patches + 1, 3, n_heads, head_dim)
         qkv = qkv.permute(2, 0, 3, 1, 4)  # (3, batch_size, n_heads, n_patches + 1, head_dim)
-
         q, k, v = qkv.unbind(dim=0)  # Unbind along QKV dimension (batch_size, n_patches + 1, n_heads, head_dim)
 
         # If CUDA available scaled_dot_product_attention yields better performance
@@ -160,7 +159,7 @@ class Attention(nn.Module):
         x = self.proj(weighted_avg)  # (batch_size, n_patches + 1, embed_dim)
         x = self.proj_drop(x)  # (batch_size, n_patches + 1, embed_dim)
 
-        return x
+        return x  # (batch_size, n_patches + 1, embed_dim)
 
 
 class MLP(nn.Module):
@@ -252,7 +251,7 @@ class Block(nn.Module):
        attn : Attention
            Attention module.
 
-       head : MLP Classifier Head
+       mlp : MLP Classifier Head
            MLP module.
        """
 
@@ -270,7 +269,7 @@ class Block(nn.Module):
         self.norm2 = nn.LayerNorm(embed_dim, eps=1e-6)
 
         # Classifier
-        self.head = MLP(
+        self.mlp = MLP(
             in_features=embed_dim,
             hidden_features=int(embed_dim * mlp_ratio),
             out_features=embed_dim,
@@ -279,7 +278,7 @@ class Block(nn.Module):
 
     def forward(self, x):
         x = x + self.attn(self.norm1(x))
-        x = x + self.head(self.norm2(x))
+        x = x + self.mlp(self.norm2(x))
 
         return x
 

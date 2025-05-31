@@ -3,3 +3,5 @@
 .env
 **/**.pth
 .pynb_checkpoints
+wandb
+**/__pycache__
